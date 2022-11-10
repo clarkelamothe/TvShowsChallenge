@@ -10,5 +10,5 @@ class ShowsRepositoryImpl @Inject constructor(
 ): ShowsRepository {
     override suspend fun getShows(): Resource<List<ShowModel>> = showsDataSource.getShows()
 
-    override suspend fun getShowById(showId: Int): Resource<ShowModel> = showsDataSource.getShowsById(showId)
+    override suspend fun getShowByQuery(showName: String): Resource<List<ShowModel>> = showsDataSource.getShowsByName(showName)
 }

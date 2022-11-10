@@ -6,5 +6,5 @@ import com.clarkelamothe.tvshowchallenge.data.models.ShowModel
 interface ShowsRepository {
     suspend fun getShows(): Resource<List<ShowModel>>
 
-    suspend fun getShowById(showId: Int): Resource<ShowModel>
+    suspend fun getShowByQuery(showName: String): Resource<List<ShowModel>>
 }

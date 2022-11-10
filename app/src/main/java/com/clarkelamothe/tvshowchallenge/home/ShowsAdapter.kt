@@ -40,14 +40,16 @@ class ShowsVH(
 
     fun bind(show: ShowModel) {
         binding.apply {
-            showTitle.text = show.name
-            showDescription.text = show.summary
 
-            Glide.with(showImage.context)
-                .load(show.image.medium)
-                .centerInside()
-                .into(showImage)
+            show.apply {
+                showTitle.text = name
+                showDescription.text = summary
 
+                Glide.with(showImage.context)
+                    .load(image.medium)
+                    .centerInside()
+                    .into(showImage)
+            }
         }
     }
 }

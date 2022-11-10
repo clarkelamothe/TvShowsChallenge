@@ -9,5 +9,5 @@ class ShowsDataSource @Inject constructor(
 
     suspend fun getShows() = getResult { showService.getShows() }
 
-    suspend fun getShowsById(id: Int) = getResult { showService.getShowById(id) }
+    suspend fun getShowsByName(showName: String) = getResult { showService.getShowByQuery(showName) }
 }

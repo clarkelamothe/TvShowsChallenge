@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.clarkelamothe.tvshowchallenge.databinding.FragmentHomeBinding
@@ -32,19 +34,41 @@ class HomeFragment : Fragment() {
         viewModel.getShows()
 
         setupObservers()
+        setupSearchQuery()
     }
 
     private fun setupObservers() {
         viewModel.showsState.observe(viewLifecycleOwner) {
             when(it) {
-                is ShowsState.Error -> {}
-                is ShowsState.Loading -> {}
+                is ShowsState.Error -> {
+                    Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()
+                }
+                is ShowsState.Loading -> Toast.makeText(this.context, "Loading", Toast.LENGTH_SHORT).show()
+
                 is ShowsState.Success -> {
-                    adapter = ShowsAdapter(it.characters, this)
+                    adapter = ShowsAdapter(it.shows, this)
                     binding.rvShowsList.adapter = adapter
                 }
             }
         }
+    }
+
+    private fun setupSearchQuery() {
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    viewModel.getShowsByQuery(it)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+//                query?.let {
+//                    viewModel.getShowsByQuery(it)
+//                }
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {
