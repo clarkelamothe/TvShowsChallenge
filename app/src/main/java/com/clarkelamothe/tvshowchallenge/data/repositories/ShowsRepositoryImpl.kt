@@ -7,8 +7,9 @@ import javax.inject.Inject
 
 class ShowsRepositoryImpl @Inject constructor(
     private val showsDataSource: ShowsDataSource
-): ShowsRepository {
+) : ShowsRepository {
     override suspend fun getShows(): Resource<List<ShowModel>> = showsDataSource.getShows()
 
-    override suspend fun getShowByQuery(showName: String): Resource<List<ShowModel>> = showsDataSource.getShowsByName(showName)
+    override suspend fun getShowByQuery(showName: String): Resource<List<ShowModel>> =
+        showsDataSource.getShowsByName(showName)
 }

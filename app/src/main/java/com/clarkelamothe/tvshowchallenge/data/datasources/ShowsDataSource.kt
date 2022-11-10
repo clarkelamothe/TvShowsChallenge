@@ -5,9 +5,10 @@ import javax.inject.Inject
 
 class ShowsDataSource @Inject constructor(
     private val showService: ShowsService
-): BaseDataSource() {
+) : BaseDataSource() {
 
     suspend fun getShows() = getResult { showService.getShows() }
 
-    suspend fun getShowsByName(showName: String) = getResult { showService.getShowByQuery(showName) }
+    suspend fun getShowsByName(showName: String) =
+        getResult { showService.getShowByQuery(showName) }
 }
