@@ -59,7 +59,10 @@ class HomeFragment : Fragment() {
     fun onShowClicked(position: Int) {
         val clickedItem = adapter.shows[position]
         val bundle = bundleOf(
-            "id" to clickedItem.id
+            "name" to clickedItem.name,
+            "desc" to clickedItem.summary,
+            "id" to clickedItem.id,
+            "image" to clickedItem.image.medium
         )
         findNavController().navigate(R.id.goToDetailsScreen, bundle)
     }
@@ -74,9 +77,6 @@ class HomeFragment : Fragment() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-//                query?.let {
-//                    viewModel.getShowsByQuery(it)
-//                }
                 return true
             }
         })
