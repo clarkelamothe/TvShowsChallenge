@@ -20,12 +20,13 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/episodeName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        tools:text="Title"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/episodeImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/episodeImage" />
+        app:layout_constraintStart_toStartOf="@+id/episodeImage"
+        tools:text="Title" />
 </androidx.constraintlayout.widget.ConstraintLayout>
