@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fadingEdge="horizontal"
     tools:context=".details.ShowsDetailsFragment">
 
     <ImageView
@@ -45,19 +46,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvEpisodes"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        tools:listitem="@layout/episode_item"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:orientation="horizontal"
-        tools:itemCount="30"
         android:layout_marginBottom="8dp"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:orientation="horizontal"
+        app:guidelineUseRtl="false"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        tools:itemCount="10"
+        tools:listitem="@layout/episode_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,11 +21,12 @@
 
     <TextView
         android:id="@+id/episodeName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
+        tools:text="Title"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/episodeImage"
-        app:layout_constraintEnd_toEndOf="@+id/episodeImage"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/episodeImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
