@@ -1,4 +1,4 @@
-package com.clarkelamothe.tvshowchallenge
+package com.clarkelamothe.tvshowchallenge.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

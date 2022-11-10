@@ -16,6 +16,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var adapter: ShowsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,15 +29,20 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.getShows()
+
         setupObservers()
     }
 
     private fun setupObservers() {
         viewModel.showsState.observe(viewLifecycleOwner) {
             when(it) {
-                is ShowsState.Error -> TODO()
-                is ShowsState.Loading -> TODO()
-                is ShowsState.Success -> it.characters
+                is ShowsState.Error -> {}
+                is ShowsState.Loading -> {}
+                is ShowsState.Success -> {
+                    adapter = ShowsAdapter(it.characters, this)
+                    binding.rvShowsList.adapter = adapter
+                }
             }
         }
     }

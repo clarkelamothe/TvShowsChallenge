@@ -21,8 +21,7 @@ class HomeViewModel @Inject constructor(
     private val _showsState = MutableLiveData<ShowsState>()
     val showsState: LiveData<ShowsState> = _showsState
 
-
-    private fun getShows() {
+    fun getShows() {
         _showsState.value = ShowsState.Loading(true)
         viewModelScope.launch(Dispatchers.Main) {
             withContext(Dispatchers.IO) {
