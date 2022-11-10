@@ -1,7 +1,9 @@
 package com.clarkelamothe.tvshowchallenge.hilt
 
 import com.clarkelamothe.tvshowchallenge.api.BASE_API_URL
+import com.clarkelamothe.tvshowchallenge.data.datasources.EpisodesDataSource
 import com.clarkelamothe.tvshowchallenge.data.datasources.ShowsDataSource
+import com.clarkelamothe.tvshowchallenge.data.services.EpisodesService
 import com.clarkelamothe.tvshowchallenge.data.services.ShowsService
 import dagger.Module
 import dagger.Provides
@@ -37,4 +39,12 @@ class Modules {
     @Provides
     fun provideShowsDataSource(showsService: ShowsService) =
         ShowsDataSource(showsService)
+
+    @Provides
+    fun provideEpisodesService(@TvShowApp retrofit: Retrofit): EpisodesService =
+        retrofit.create(EpisodesService::class.java)
+
+    @Provides
+    fun provideEpisodesDataSource(episodesService: EpisodesService) =
+        EpisodesDataSource(episodesService)
 }
