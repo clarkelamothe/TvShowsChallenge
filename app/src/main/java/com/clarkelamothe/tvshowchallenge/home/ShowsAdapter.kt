@@ -10,13 +10,9 @@ import com.clarkelamothe.tvshowchallenge.data.models.ShowModel
 import com.clarkelamothe.tvshowchallenge.databinding.ShowItemBinding
 
 class ShowsAdapter(
-    private val shows: List<ShowModel>,
+    val shows: List<ShowModel>,
     val listener: HomeFragment
 ): RecyclerView.Adapter<ShowsVH>() {
-
-    interface OnShowListener {
-        fun onShowClicked(position: Int)
-    }
 
     override fun getItemCount(): Int = shows.size
 
@@ -37,6 +33,12 @@ class ShowsVH(
 ): RecyclerView.ViewHolder(view){
 
     private val binding = ShowItemBinding.bind(view)
+
+    init {
+        itemView.setOnClickListener {
+            listener.onShowClicked(adapterPosition)
+        }
+    }
 
     fun bind(show: ShowModel) {
         binding.apply {

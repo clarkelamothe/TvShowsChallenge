@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.clarkelamothe.tvshowchallenge.R
 import com.clarkelamothe.tvshowchallenge.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,6 +54,14 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    fun onShowClicked(position: Int) {
+        val clickedItem = adapter.shows[position]
+        val bundle = bundleOf(
+            "id" to clickedItem.id
+        )
+        findNavController().navigate(R.id.goToDetailsScreen, bundle)
     }
 
     private fun setupSearchQuery() {
